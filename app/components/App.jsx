@@ -4,12 +4,12 @@ import { Input, Button } from 'react-bootstrap';
 export default class App extends React.Component {
     
     constructor() {
-    super();
+        super();
 
-    this.state = {
-      value: ''
+        this.state = {
+          value: ''
+        }
     }
-  }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -35,7 +35,7 @@ export default class App extends React.Component {
   render () {
     return (<div>
                 <p>TODO APPLICATION</p>
-                    <form onSubmit="{handleSubmit.bind(this)}">
+                    <form onSubmit="{this.handleSubmit}">
                         <div>
                            <Input type="text"  
                                     value={this.state.value} 
