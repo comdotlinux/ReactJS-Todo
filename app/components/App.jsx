@@ -2,11 +2,14 @@ import React from 'react';
 
 export default class App extends React.Component {
     
-    constructor(){
-        super();
-        {value: ''};
+    constructor() {
+    super();
+
+    this.state = {
+      value: ''
     }
-    
+  }
+
     handleSubmit(event) {
         event.preventDefault();
         console.log("prevented default submit.")
@@ -20,6 +23,8 @@ export default class App extends React.Component {
     }
     
     handleChange() {
+        // This could also be done using ReactLink:
+        // http://facebook.github.io/react/docs/two-way-binding-helpers.html
         this.setState({
           value: this.refs.input.getValue()
         });
