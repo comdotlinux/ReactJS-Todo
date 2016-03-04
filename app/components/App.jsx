@@ -1,4 +1,5 @@
 import React from 'react';
+import { Input, Button } from 'react-bootstrap';
 
 export default class App extends React.Component {
     
@@ -33,24 +34,20 @@ export default class App extends React.Component {
   render () {
     return (<div>
                 <p>TODO APPLICATION</p>
-                <div>
-                    <form onSubmit="{this.handleSubmit}">
                         <div>
                            <Input type="text"  
                                     value={this.state.value} 
-                                    placeholder="Enter text"
-                                    label="Working example with validation"
-                                    help="Validation is based on string length."
+                                    placeholder="todo goes here"
+                                    label="Enter A TODO"
+                                    help="Please enter a good descriptive todo."
                                     bsStyle={this.validationState()}
                                     hasFeedback
                                     ref="input"
                                     groupClassName="group-class"
                                     labelClassName="label-class"
                                     onChange={this.handleChange} />
-                            <button>Add TODO</button>
+                            <Button bsStyle="primary">Add TODO</Button>
                         </div>
-                    </form>    
-                </div>
             </div>);
   }
 }
