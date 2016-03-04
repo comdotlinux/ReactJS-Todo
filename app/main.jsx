@@ -1,4 +1,7 @@
 import './stylesheets/main.css';
+import './stylesheets/bootstrap.css';
+import './stylesheets/bootstrap-theme.css';
+
 
 import React from 'react';
 import App from './components/App';
