@@ -4,7 +4,6 @@ var merge = require('webpack-merge');
 
 //var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
-var removeUseStrict = require('remove-use-strict');
 
 var common = {
   entry: [path.resolve(ROOT_PATH, 'app/main')],
