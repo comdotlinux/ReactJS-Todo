@@ -18,6 +18,7 @@ export default class App extends React.Component {
     
     validationState() {
         let length = this.state.value.length;
+        console.log("input length " + length);
         if (length > 10) return 'success';
         else if (length > 5) return 'warning';
         else if (length > 0) return 'error';
@@ -39,13 +40,12 @@ export default class App extends React.Component {
                                     value={this.state.value} 
                                     placeholder="todo goes here"
                                     label="Enter A TODO"
-                                    help="Please enter a good descriptive todo."
                                     bsStyle={this.validationState()}
                                     hasFeedback
                                     ref="input"
-                                    groupClassName="group-class"
-                                    labelClassName="label-class"
-                                    onChange={this.handleChange} />
+                                    groupClassName="input-group"
+                                    labelClassName="input-group-addon"
+                                    onChange={this.handleChange.bind(this)} />
                             <Button bsStyle="primary">Add TODO</Button>
                         </div>
             </div>);
