@@ -35,6 +35,7 @@ export default class App extends React.Component {
   render () {
     return (<div>
                 <p>TODO APPLICATION</p>
+                    <form onSubmit="{handleSubmit.bind(this)}">
                         <div>
                            <Input type="text"  
                                     value={this.state.value} 
@@ -48,6 +49,7 @@ export default class App extends React.Component {
                                     onChange={this.handleChange.bind(this)} />
                             <Button bsStyle="primary">Add TODO</Button>
                         </div>
+                    </form>
             </div>);
   }
 }

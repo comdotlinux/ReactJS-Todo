@@ -2,7 +2,7 @@ import './stylesheets/main.css';
 import './stylesheets/bootstrap.css';
 import './stylesheets/bootstrap-theme.css';
 
-
+import ReactDOM from 'react-dom';
 import React from 'react';
 import App from './components/App';
 
@@ -12,5 +12,5 @@ function main() {
   var app = document.createElement('div');
   document.body.appendChild(app);
 
-  React.render(<App />, app);
+  ReactDOM.render(<App />, app);
 }
