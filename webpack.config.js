@@ -4,6 +4,7 @@ var merge = require('webpack-merge');
 
 //var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
+var removeUseStrict = require('remove-use-strict');
 
 var common = {
   entry: [path.resolve(ROOT_PATH, 'app/main')],
@@ -25,7 +26,7 @@ var common = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel?stage=3',
+        loader: 'babel?stage=1',
         include: path.resolve(ROOT_PATH, 'app'),
       }
     ],
@@ -47,7 +48,7 @@ if (TARGET === 'build') {
     module: {
       loaders: [ {
           test: /\.jsx?$/,
-          loaders: ['react-hot', 'babel?stage=3'],
+          loaders: ['react-hot', 'babel?stage=1'],
           include: path.resolve(ROOT_PATH, 'app'),
         },
       ],
