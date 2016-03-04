@@ -5,14 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "TAGET=build webpack",
-    "start": "TARGET=dev webpack-dev-server --devtool eval --progress --colors --hot"
+    "build": "set TAGET=build;webpack",
+    "start": "webpack-dev-server --devtool eval --progress --colors --hot"
   },
   "author": "Guruprasad Kulkarni",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "devDependencies": {
-    "babel-core": "^6.6.4",
-    "babel-loader": "^6.2.4",
+    "babel-core": "^5.6.15",
+    "babel-loader": "^5.3.1",
     "css-loader": "^0.23.1",
     "html-webpack-plugin": "^2.9.0",
     "node-libs-browser": "^1.0.0",

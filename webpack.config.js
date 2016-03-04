@@ -2,7 +2,7 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var merge = require('webpack-merge');
 
-var TARGET = process.env.TARGET;
+//var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
@@ -25,18 +25,20 @@ var common = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel?stage=1',
+        loader: 'babel?stage=3',
         include: path.resolve(ROOT_PATH, 'app'),
       }
     ],
   },
 };
 
+/*
 if (TARGET === 'build') {
   module.exports = common;
 }
+*/
 
-if (TARGET === 'dev') {
+//if (TARGET === 'dev') {
   module.exports = merge(common, {
     entry: [
       'webpack-dev-server/client?http://0.0.0.0:8080',
@@ -45,10 +47,10 @@ if (TARGET === 'dev') {
     module: {
       loaders: [ {
           test: /\.jsx?$/,
-          loaders: ['react-hot', 'babel?stage=1'],
+          loaders: ['react-hot', 'babel?stage=3'],
           include: path.resolve(ROOT_PATH, 'app'),
         },
       ],
     },
   });
-}
+//}
