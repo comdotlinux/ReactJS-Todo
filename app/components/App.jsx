@@ -19,14 +19,12 @@ export default class App extends React.Component {
     validationState() {
         let length = this.state.value.length;
         console.log("input length " + length);
-        if (length > 10) return 'success';
-        else if (length > 5) return 'warning';
+        if (length > 5) return 'success';
+        else if (length > 2) return 'warning';
         else if (length > 0) return 'error';
     }
     
     handleChange() {
-        // This could also be done using ReactLink:
-        // http://facebook.github.io/react/docs/two-way-binding-helpers.html
         this.setState({
           value: this.refs.input.getValue()
         });
