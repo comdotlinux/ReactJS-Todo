@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button } from 'react-bootstrap';
+import { Input, ButtonInput } from 'react-bootstrap';
 
 export default class App extends React.Component {
     
@@ -7,53 +7,68 @@ export default class App extends React.Component {
         super();
 
         this.state = {
-          value: '',
+          todoItem: '',
           todoItems: []
         }
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log("prevented default submit.");
-        let newTodoItems = this.state.todoItems.e
-        setState()
+        let updatedTodoItems = this.state.todoItems.concat(this.state.todoItem);
+        this.setState({
+            todoItem: '',
+            todoItems: updatedTodoItems
+        });
     }
     
     validationState() {
-        let length = this.state.value.length;
+        let todoItemValue = this.state.todoItem.toLowerCase();
+        let cssClassToSet = null;
+        
+        if(todoItemValue === 'red'){
+            cssClassToSet = 'inputred';
+        } else if(todoItemValue === 'green'){
+            cssClassToSet = 'inputgreen';
+        } else if(todoItemValue === 'yellow'){
+            cssClassToSet = 'inputyellow';
+        } else {
+            cssClassToSet = '';
+        }
+        
+        console.log("css class set", cssClassToSet);
+        
+       /* let length = todoItemValue.length;
         console.log("input length " + length);
-        if (length > 20) return 'success';
-        else if (length > 10) return 'warning';
-        else if (length > 0) return 'error';
+        if (length > 20) cssClassToSet += ' success';
+        else if (length > 10) cssClassToSet += ' warning';
+        else if (length > 0) cssClassToSet += ' error';*/
+        
+        
     }
     
     handleChange() {
         this.setState({
-          value: this.refs.input.getValue()
+          todoItem: this.refs.input.getValue()
         });
     }
     
   render () {
-    return (<div>
-                <p>TODO APPLICATION</p>
-                    <form onSubmit={this.handleSubmit}>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="input-group">
-                                   <Input type="text"  
-                                            value={this.state.value} 
-                                            placeholder="Please enter a good descriptive todo...."
-                                            bsStyle={this.validationState()}
-                                            hasFeedback
-                                            ref="input"
-                                            onChange={this.handleChange.bind(this)} />
-                                            <span class="input-group-btn">
-                                                <Button bsStyle="primary">Add TODO</Button>
-                                            </span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-            </div>);
+    return (
+                <div>
+                    <p>TODO APPLICATION</p>
+                        <form onSubmit={this.handleSubmit.bind(this)}>
+                            <Input type="text"
+                                id="todoInput"
+                                value={this.state.todoItem} 
+                                placeholder="Please enter a good descriptive todo...."
+                                bsStyle={this.validationState()}
+                                hasFeedback
+                                ref="input"
+                                onChange={this.handleChange.bind(this)}></Input>
+                                <ButtonInput type="submit" bsStyle="primary">Add TODO</ButtonInput>
+                        </form>
+                    <div class="alert alert-info" role="alert">{this.state.todoItems.toString()}</div>
+                </div>
+            );
   }
 }
