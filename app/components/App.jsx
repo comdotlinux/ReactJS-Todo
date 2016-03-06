@@ -7,13 +7,16 @@ export default class App extends React.Component {
         super();
 
         this.state = {
-          value: ''
+          value: '',
+          todoItems: []
         }
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log("prevented default submit.")
+        console.log("prevented default submit.");
+        let newTodoItems = this.state.todoItems.e
+        setState()
     }
     
     validationState() {
@@ -44,7 +47,9 @@ export default class App extends React.Component {
                                             hasFeedback
                                             ref="input"
                                             onChange={this.handleChange.bind(this)} />
-                                    <Button bsStyle="primary">Add TODO</Button>
+                                            <span class="input-group-btn">
+                                                <Button bsStyle="primary">Add TODO</Button>
+                                            </span>
                                 </div>
                             </div>
                         </div>
