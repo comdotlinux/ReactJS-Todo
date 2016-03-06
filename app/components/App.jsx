@@ -8,7 +8,8 @@ export default class App extends React.Component {
 
         this.state = {
           todoItem: '',
-          todoItems: []
+          todoItems: [],
+          textInputClass: ''
         }
     }
 
@@ -22,33 +23,35 @@ export default class App extends React.Component {
     }
     
     validationState() {
-        let todoItemValue = this.state.todoItem.toLowerCase();
-        let cssClassToSet = null;
         
-        if(todoItemValue === 'red'){
-            cssClassToSet = 'inputred';
-        } else if(todoItemValue === 'green'){
-            cssClassToSet = 'inputgreen';
-        } else if(todoItemValue === 'yellow'){
-            cssClassToSet = 'inputyellow';
-        } else {
-            cssClassToSet = '';
-        }
         
-        console.log("css class set", cssClassToSet);
-        
-       /* let length = todoItemValue.length;
+        let length = this.state.todoItem.length;
         console.log("input length " + length);
-        if (length > 20) cssClassToSet += ' success';
-        else if (length > 10) cssClassToSet += ' warning';
-        else if (length > 0) cssClassToSet += ' error';*/
+        if (length > 20) return 'success';
+        else if (length > 10) return 'warning';
+        else if (length > 0) return 'error';
         
         
     }
     
     handleChange() {
+    let todoItemValue = this.refs.input.getValue();
+    let todoItemValueLower = todoItemValue.toLowerCase();
+    let cssClassToSet = '';
+        
+        if(todoItemValueLower === 'red'){
+            cssClassToSet = 'inputred';
+        } else if(todoItemValueLower === 'green'){
+            cssClassToSet = 'inputgreen';
+        } else if(todoItemValueLower === 'yellow'){
+            cssClassToSet = 'inputyellow';
+        }
+        
+        console.log("css class set ", cssClassToSet);
+    
         this.setState({
-          todoItem: this.refs.input.getValue()
+          todoItem: todoItemValue,
+          textInputClass: cssClassToSet
         });
     }
     
@@ -59,7 +62,8 @@ export default class App extends React.Component {
                         <form onSubmit={this.handleSubmit.bind(this)}>
                             <Input type="text"
                                 id="todoInput"
-                                value={this.state.todoItem} 
+                                value={this.state.todoItem}
+                                className={this.state.textInputClass}
                                 placeholder="Please enter a good descriptive todo...."
                                 bsStyle={this.validationState()}
                                 hasFeedback
@@ -67,7 +71,7 @@ export default class App extends React.Component {
                                 onChange={this.handleChange.bind(this)}></Input>
                                 <ButtonInput type="submit" bsStyle="primary">Add TODO</ButtonInput>
                         </form>
-                    <div class="alert alert-info" role="alert">{this.state.todoItems.toString()}</div>
+                        <div className="alert,alertInfo" role="alert">{this.state.todoItems.toString()}</div>
                 </div>
             );
   }

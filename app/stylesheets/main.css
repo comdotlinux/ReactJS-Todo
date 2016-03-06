@@ -1,11 +1,11 @@
-inputgreen{
+.form-control.inputgreen{
    color: green;
-};
+}
 
-inputred{
+.form-control.inputred{
     color: red;
 }
 
-inputyellow{
+.form-control.inputyellow{
     color: yellow;
 }
