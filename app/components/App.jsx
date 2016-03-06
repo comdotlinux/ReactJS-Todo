@@ -14,9 +14,19 @@ export default class App extends React.Component {
         }
     }
 
+
+    handleDelete(todoItemToRemove){
+        console.log(todoItemToRemove);
+    }
+
     handleSubmit(event) {
         event.preventDefault();
-        let updatedTodoItems = this.state.todoItems.concat(this.state.todoItem);
+        let updatedTodoItems = null;
+        if(this.state.todoItems.find(function(item){
+            item === this.state.todoItem;
+        })){
+            updatedTodoItems = this.state.todoItems.concat(this.state.todoItem);
+        }
         this.setState({
             todoItem: '',
             todoItems: updatedTodoItems
@@ -72,7 +82,7 @@ export default class App extends React.Component {
                                 onChange={this.handleChange.bind(this)}></Input>
                                 <ButtonInput type="submit" bsStyle="primary">Add TODO</ButtonInput>
                         </form>
-                        <DisplayItems todoItems={this.state.todoItems}/>
+                        <DisplayItems handleDelete={this.handleDelete} todoItems={this.state.todoItems}/>
                 </div>
             );
   }

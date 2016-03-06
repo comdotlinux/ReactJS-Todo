@@ -11,7 +11,10 @@ export default class DisplayItems extends React.Component {
     return <div>
         <ul>
         {this.props.todoItems.map((item, i) => {
-        return <li key={item}>{item} <a href='#' onClick={this.handleDelete}>[X]</a></li>;
+                return <li 
+                            key={item}> {item} 
+                                    <a href='#' onClick={this.props.handleDelete.bind(this,item)}>[X]</a>
+                        </li>;
             })
         }
         </ul>
