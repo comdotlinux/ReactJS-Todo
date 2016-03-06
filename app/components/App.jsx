@@ -24,7 +24,6 @@ export default class App extends React.Component {
     
     validationState() {
         
-        
         let length = this.state.todoItem.length;
         console.log("input length " + length);
         if (length > 20) return 'success';
@@ -36,17 +35,18 @@ export default class App extends React.Component {
     
     handleChange() {
     let todoItemValue = this.refs.input.getValue();
-    let todoItemValueLower = todoItemValue.toLowerCase();
     let cssClassToSet = '';
+    if(todoItemValue !== null){
+        let todoItemValueLower = todoItemValue.toLowerCase();
         
-        if(todoItemValueLower === 'red'){
+        if(todoItemValueLower.contains('red')){
             cssClassToSet = 'inputred';
-        } else if(todoItemValueLower === 'green'){
+        } else if(todoItemValueLower.contains('green')){
             cssClassToSet = 'inputgreen';
-        } else if(todoItemValueLower === 'yellow'){
+        } else if(todoItemValueLower.contains('yellow')){
             cssClassToSet = 'inputyellow';
         }
-        
+    }
         console.log("css class set ", cssClassToSet);
     
         this.setState({
