@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, ButtonInput } from 'react-bootstrap';
+import DisplayItems from './DisplayItems'
 
 export default class App extends React.Component {
     
@@ -71,7 +72,7 @@ export default class App extends React.Component {
                                 onChange={this.handleChange.bind(this)}></Input>
                                 <ButtonInput type="submit" bsStyle="primary">Add TODO</ButtonInput>
                         </form>
-                        <div className="alert,alertInfo" role="alert">{this.state.todoItems.toString()}</div>
+                        <DisplayItems todoItems={this.state.todoItems}/>
                 </div>
             );
   }
