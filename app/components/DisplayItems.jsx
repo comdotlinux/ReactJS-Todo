@@ -23,6 +23,7 @@ export default class DisplayItems extends React.Component {
                                                 <Button 
                                                     bsStyle="warning"
                                                     href="#"
+                                                    bsSize="xs"
                                                     onClick={
                                                         this.props.handleDelete.bind(null,_item)
                                                     }>Delete?</Button></td>

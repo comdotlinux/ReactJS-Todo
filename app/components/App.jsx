@@ -16,10 +16,13 @@ export default class App extends React.Component {
 
 
     handleDelete(todoItemToRemove){
-        console.log("Item to remove : ", todoItemToRemove);
+        //console.log("Item to remove : ", todoItemToRemove);
         let _newTodos = this.state.todoItems.filter((_item) => {
-            return todoItemToRemove === _item;
+            //console.log("item to compare : ",_item);
+            return todoItemToRemove !== _item;
         });
+        
+        //console.log("new todo list ", _newTodos.toString());
         
         this.setState({
            todoItems: _newTodos 
