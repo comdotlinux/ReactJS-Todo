@@ -10,22 +10,22 @@ export default class DisplayItems extends React.Component {
                     <th>#</th>
                     <th>Done</th>
                     <th>Todo Description</th>
-                    <th>Delete</th>
+                    <th>Delete TODO</th>
                   </tr>
                 </thead>
                 <tbody>
                         {this.props.todoItems.map((_item, i) => {
                                 return <tr key={_item + '-' + i}>
-                                            <td key={_item + '-' + i + 'index'}>{i}</td>
-                                            <td key={_item + '-' + i + 'done'}>done</td>
-                                            <td key={_item + '-' + i + 'description'}>{_item}</td>
-                                            <td key={_item + '-' + i + 'delete'}>
+                                            <td key={_item + '-' + (i + 1) + 'index'}>{i + 1}</td>
+                                            <td key={_item + '-' + (i + 1) + 'done'}>done</td>
+                                            <td key={_item + '-' + (i + 1) + 'description'}>{_item}</td>
+                                            <td key={_item + '-' + (i + 1) + 'delete'}>
                                                 <Button 
-                                                    bsStyle="danger"
+                                                    bsStyle="warning"
                                                     href="#"
                                                     onClick={
                                                         this.props.handleDelete.bind(null,_item)
-                                                    }>[X]</Button></td>
+                                                    }>Delete?</Button></td>
                                         </tr>;
                         })}
                 </tbody>

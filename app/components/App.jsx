@@ -16,7 +16,7 @@ export default class App extends React.Component {
 
 
     handleDelete(todoItemToRemove){
-        console.log(todoItemToRemove);
+        console.log("Item to remove : ", todoItemToRemove);
         let _newTodos = this.state.todoItems.filter((_item) => {
             return todoItemToRemove === _item;
         });
@@ -46,7 +46,7 @@ export default class App extends React.Component {
     validationState() {
         
         let length = this.state.todoItem.length;
-        console.log("input length " + length);
+        console.log("input length for textfield validation is : ", length);
         if (length > 20) return 'success';
         else if (length > 10) return 'warning';
         else if (length > 0) return 'error';
