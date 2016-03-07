@@ -28,11 +28,19 @@ export default class App extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        let updatedTodoItems = this.state.todoItems.concat(this.state.todoItem);
+        let _todoItem = this.state.todoItem;
+        if(_todoItem !== null && _todoItem !== ''){
+            let updatedTodoItems = this.state.todoItems.concat(_todoItem);
+            this.setState({
+                todoItems: updatedTodoItems
+            });
+        } else {
+            console.log("Skipping adding a empty todo...");
+        }
+        
         this.setState({
-            todoItem: '',
-            todoItems: updatedTodoItems
-        });
+                todoItem: ''
+            });
     }
     
     validationState() {
