@@ -17,16 +17,18 @@ export default class App extends React.Component {
 
     handleDelete(todoItemToRemove){
         console.log(todoItemToRemove);
+        let _newTodos = this.state.todoItems.filter((_item) => {
+            return todoItemToRemove === _item;
+        });
+        
+        this.setState({
+           todoItems: _newTodos 
+        });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        let updatedTodoItems = null;
-        if(this.state.todoItems.find(function(item){
-            item === this.state.todoItem;
-        })){
-            updatedTodoItems = this.state.todoItems.concat(this.state.todoItem);
-        }
+        let updatedTodoItems = this.state.todoItems.concat(this.state.todoItem);
         this.setState({
             todoItem: '',
             todoItems: updatedTodoItems
@@ -45,20 +47,20 @@ export default class App extends React.Component {
     }
     
     handleChange() {
-    let todoItemValue = this.refs.input.getValue();
-    let cssClassToSet = '';
-    if(todoItemValue !== null){
-        let todoItemValueLower = todoItemValue.toLowerCase();
-        
-        if(todoItemValueLower.contains('red')){
-            cssClassToSet = 'inputred';
-        } else if(todoItemValueLower.contains('green')){
-            cssClassToSet = 'inputgreen';
-        } else if(todoItemValueLower.contains('yellow')){
-            cssClassToSet = 'inputyellow';
+        let todoItemValue = this.refs.input.getValue();
+        let cssClassToSet = '';
+        if(todoItemValue !== null){
+            let todoItemValueLower = todoItemValue.toLowerCase();
+
+            if(todoItemValueLower.contains('red')){
+                cssClassToSet = 'inputred';
+            } else if(todoItemValueLower.contains('green')){
+                cssClassToSet = 'inputgreen';
+            } else if(todoItemValueLower.contains('yellow')){
+                cssClassToSet = 'inputyellow';
+            }
         }
-    }
-        console.log("css class set ", cssClassToSet);
+        console.log("css class set as ", cssClassToSet);
     
         this.setState({
           todoItem: todoItemValue,
@@ -82,7 +84,7 @@ export default class App extends React.Component {
                                 onChange={this.handleChange.bind(this)}></Input>
                                 <ButtonInput type="submit" bsStyle="primary">Add TODO</ButtonInput>
                         </form>
-                        <DisplayItems handleDelete={this.handleDelete} todoItems={this.state.todoItems}/>
+                        <DisplayItems handleDelete={this.handleDelete.bind(this)} todoItems={this.state.todoItems}/>
                 </div>
             );
   }

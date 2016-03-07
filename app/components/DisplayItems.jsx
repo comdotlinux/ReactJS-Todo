@@ -3,10 +3,6 @@ import { Table } from 'react-bootstrap';
 
 export default class DisplayItems extends React.Component {
     
-    constructor() {
-        super();
-    }
-
     render(){
     return <Table striped bordered condensed hover>
                 <thead>
@@ -18,15 +14,14 @@ export default class DisplayItems extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                        {this.props.todoItems.map((item, i) => {
-                            return <tr key={item + '-' + i}>
-                                        <td key={item + '-' + i + 'index'}>{i}</td>
-                                        <td key={item + '-' + i + 'done'}>done</td>
-                                        <td key={item + '-' + i + 'description'}>{item}</td>
-                                        <td key={item + '-' + i + 'delete'}><a href='#' onClick={this.props.handleDelete.bind(null,item)}>[X]</a></td>
-                                    </tr>;
-                                })
-                        }
+                        {this.props.todoItems.map((_item, i) => {
+                                return <tr key={_item + '-' + i}>
+                                            <td key={_item + '-' + i + 'index'}>{i}</td>
+                                            <td key={_item + '-' + i + 'done'}>done</td>
+                                            <td key={_item + '-' + i + 'description'}>{_item}</td>
+                                            <td key={_item + '-' + i + 'delete'}><a href='#' onClick={this.props.handleDelete.bind(null,_item)}>[X]</a></td>
+                                        </tr>;
+                        })}
                 </tbody>
            </Table>;
     }
