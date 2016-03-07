@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Button,Table } from 'react-bootstrap';
 
 export default class DisplayItems extends React.Component {
     
@@ -19,7 +19,13 @@ export default class DisplayItems extends React.Component {
                                             <td key={_item + '-' + i + 'index'}>{i}</td>
                                             <td key={_item + '-' + i + 'done'}>done</td>
                                             <td key={_item + '-' + i + 'description'}>{_item}</td>
-                                            <td key={_item + '-' + i + 'delete'}><a href='#' onClick={this.props.handleDelete.bind(null,_item)}>[X]</a></td>
+                                            <td key={_item + '-' + i + 'delete'}>
+                                                <Button 
+                                                    bsStyle="danger"
+                                                    href="#"
+                                                    onClick={
+                                                        this.props.handleDelete.bind(null,_item)
+                                                    }>[X]</Button></td>
                                         </tr>;
                         })}
                 </tbody>
