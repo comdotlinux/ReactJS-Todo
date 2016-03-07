@@ -1,6 +1,7 @@
 import React from 'react';
 import { Input, ButtonInput } from 'react-bootstrap';
-import DisplayItems from './DisplayItems'
+import DisplayItems from './DisplayItems';
+import _ from 'underscore';
 
 export default class App extends React.Component {
     
@@ -32,7 +33,7 @@ export default class App extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         let _todoItem = this.state.todoItem;
-        if(_todoItem !== null && _todoItem !== ''){
+        if(_todoItem !== null && _todoItem !== '' && !_.contains(this.state.todoItems,_todoItem)){
             let updatedTodoItems = this.state.todoItems.concat(_todoItem);
             this.setState({
                 todoItems: updatedTodoItems
