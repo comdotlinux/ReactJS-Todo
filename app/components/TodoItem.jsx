@@ -13,7 +13,7 @@ export default class TodoItems extends React.Component {
                             bsStyle="warning"
                             href="#"
                             bsSize="xs"
-                            onClick={this.props.handleDelete.bind(null,this.props.item)}>Delete?</Button></td>
+                            onClick={this.props.handleDelete(this.props.item)}>Delete?</Button></td>
                 </tr>
     }
 }
