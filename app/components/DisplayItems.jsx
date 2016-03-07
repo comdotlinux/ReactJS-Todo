@@ -15,7 +15,7 @@ export default class DisplayItems extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                    {this.props.todoItems.map((_item, i) => {return <TodoItem handleDelete={this.props.handleDelete.bind(null,_item)} item={_item} itemIndex={i + 1}/>;})}
+                    {this.props.todoItems.map((_item, i) => {return <TodoItem handleDelete={this.props.handleDelete} item={_item} itemIndex={i + 1}/>;})}
                 </tbody>
            </Table>;
     }
