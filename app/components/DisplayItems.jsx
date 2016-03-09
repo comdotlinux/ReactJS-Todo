@@ -36,8 +36,8 @@ export default class DisplayItems extends React.Component {
 }
 
 DisplayItems.propTypes = {
-    handleDelete: React.PropTypes.func,
-    todoItems: React.PropTypes.array
+    handleDelete: React.PropTypes.func.isRequired,
+    todoItems: React.PropTypes.array.isRequired
 };
 
 DisplayItems.defaultProps = {

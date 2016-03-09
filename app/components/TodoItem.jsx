@@ -28,9 +28,9 @@ export default class TodoItem extends React.Component {
 
 
 TodoItem.propTypes = {
-    handleDelete: React.PropTypes.func,
-    item: React.PropTypes.string,
-    itemIndex: React.PropTypes.number
+    handleDelete: React.PropTypes.func.isRequired,
+    item: React.PropTypes.string.isRequired,
+    itemIndex: React.PropTypes.number.isRequired
 };
 
 TodoItem.defaultProps = {
