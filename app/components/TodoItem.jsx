@@ -6,16 +6,21 @@ export default class TodoItems extends React.Component {
     
     
     render(){
-        return <tr>
-                    <td key={this.props.item + '-' + this.props.itemIndex + 'index'}>{this.props.itemIndex}</td>
-                    <td key={this.props.item + '-' + this.props.itemIndex + 'done'}>done</td>
-                    <td key={this.props.item + '-' + this.props.itemIndex + 'description'}>{this.props.item}</td>
-                    <td key={this.props.item + '-' + this.props.itemIndex + 'delete'}>
+        let _item = this.props.item;
+        let _index = this.props.ItemIndex;
+        let _handleDelete = this.props.handleDelete;
+        console.log("Rendering Todo Item, " + _item);
+        return (<tr>
+                    <td key={_item + '-' + _index + 'index'}>{_index}</td>
+                    <td key={_item + '-' + _index + 'done'}>done</td>
+                    <td key={_item + '-' + _index + 'description'}>{_item}</td>
+                    <td key={_item + '-' + _index + 'delete'}>
                         <Button 
                             bsStyle="warning"
                             href="#"
                             bsSize="xs"
-                            onClick={this.props.handleDelete(this.props.item)}>Delete?</Button></td>
-                </tr>
+                            onClick={_handleDelete(_item)}>Delete?</Button>
+                    </td>
+                </tr>);
     }
 }

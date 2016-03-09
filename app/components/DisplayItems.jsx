@@ -5,7 +5,9 @@ import TodoItem from './TodoItem';
 export default class DisplayItems extends React.Component {
     
     render(){
-    return <Table striped bordered condensed hover>
+        const _handleDelete = this.props.handleDelete;
+        const _todos = this.props.todoItems;
+    return (<Table striped bordered condensed hover>
                 <thead>
                   <tr>
                     <th>#</th>
@@ -15,8 +17,17 @@ export default class DisplayItems extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                {this.props.todoItems.map((_item, i) => {return <TodoItem key={_item + - + (i + 1)} handleDelete={this.props.handleDelete} item={_item} itemIndex={i + 1}/>;})}
+                {_todos.map((_item, i) => {
+                                    console.log("inside DisplayItems todos.map item " + _item + " and index is" +  i);
+                                    return <TodoItem 
+                                               key={_item + '-' + (i + 1)} 
+                                               handleDelete={_handleDelete} 
+                                               item={_item} 
+                                               itemIndex={i + 1}/>
+                                }
+                           )
+                }
                 </tbody>
-           </Table>;
+           </Table>);
     }
 }
