@@ -2,9 +2,11 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 export default class TodoItems extends React.Component {
+
+    
     
     render(){
-        return <tr key={this.props.item + '-' + this.props.itemIndex}>
+        return <tr>
                     <td key={this.props.item + '-' + this.props.itemIndex + 'index'}>{this.props.itemIndex}</td>
                     <td key={this.props.item + '-' + this.props.itemIndex + 'done'}>done</td>
                     <td key={this.props.item + '-' + this.props.itemIndex + 'description'}>{this.props.item}</td>
