@@ -3,6 +3,9 @@ import { Button,Table } from 'react-bootstrap';
 import TodoItem from './TodoItem';
 
 export default class DisplayItems extends React.Component {
+    constructor(props){
+        super(props)
+    }
     
     render(){
         let _handleDelete = this.props.handleDelete;
@@ -33,8 +36,8 @@ export default class DisplayItems extends React.Component {
 }
 
 DisplayItems.propTypes = {
-    handleDelete: React.propTypes.func.isRequired,
-    todoItems: React.PropTypes.array.isRequired
+    handleDelete: React.PropTypes.func,
+    todoItems: React.PropTypes.array
 };
 
 DisplayItems.defaultProps = {

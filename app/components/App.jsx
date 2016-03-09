@@ -5,14 +5,14 @@ import _ from 'underscore';
 
 export default class App extends React.Component {
     
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
           todoItem: '',
           todoItems: [],
           textInputClass: ''
-        }
+        };
     }
 
 
