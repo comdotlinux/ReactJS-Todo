@@ -1,15 +1,11 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-export default class TodoItems extends React.Component {
-
-//    TodoItems.propTypes = {
-//        item: 
-//    }
-    
+export default class TodoItem extends React.Component {
+     
     render(){
         let _item = this.props.item;
-        let _index = this.props.ItemIndex;
+        let _index = this.props.itemIndex;
         let _handleDelete = this.props.handleDelete;
         console.log("Rendering Todo Item, " + _item);
         return (<tr>
@@ -26,3 +22,17 @@ export default class TodoItems extends React.Component {
                 </tr>);
     }
 }
+
+
+TodoItem.propTypes = {
+    handleDelete: React.propTypes.func.isRequired,
+    item: React.PropTypes.string.isRequired,
+    itemIndex: React.PropTypes.number.isRequired
+};
+
+TodoItem.defaultProps = {
+    handleDelete: function(itemToDelete){
+        console.log("Should be replaced by a function callback to delete the todo from state list.");
+    },
+    todoItem: []
+};

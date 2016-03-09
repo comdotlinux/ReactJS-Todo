@@ -5,8 +5,8 @@ import TodoItem from './TodoItem';
 export default class DisplayItems extends React.Component {
     
     render(){
-        const _handleDelete = this.props.handleDelete;
-        const _todos = this.props.todoItems;
+        let _handleDelete = this.props.handleDelete;
+        let _todos = this.props.todoItems;
     return (<Table striped bordered condensed hover>
                 <thead>
                   <tr>
@@ -31,3 +31,15 @@ export default class DisplayItems extends React.Component {
            </Table>);
     }
 }
+
+DisplayItems.propTypes = {
+    handleDelete: React.propTypes.func.isRequired,
+    todoItems: React.PropTypes.array.isRequired
+};
+
+DisplayItems.defaultProps = {
+    handleDelete: function(itemToDelete){
+        console.log("Should be replaced by a function callback to delete the todo from state list.");
+    },
+    todoItems: []
+};
