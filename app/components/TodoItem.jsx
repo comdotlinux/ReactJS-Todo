@@ -3,7 +3,9 @@ import { Button } from 'react-bootstrap';
 
 export default class TodoItems extends React.Component {
 
-    
+//    TodoItems.propTypes = {
+//        item: 
+//    }
     
     render(){
         let _item = this.props.item;
@@ -19,7 +21,7 @@ export default class TodoItems extends React.Component {
                             bsStyle="warning"
                             href="#"
                             bsSize="xs"
-                            onClick={_handleDelete(_item)}>Delete?</Button>
+                            onClick={_handleDelete.bind(null,_item)}>Delete?</Button>
                     </td>
                 </tr>);
     }
