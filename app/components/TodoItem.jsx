@@ -1,19 +1,34 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Input, Button } from 'react-bootstrap';
 
 export default class TodoItem extends React.Component {
     constructor(props){
-        super(props)
+        super(props);
+        
+        this.state = {
+            taskDone: false
+        }
+        
     } 
+    
+    handleOnClick(){
+        let _taskDone = !this.state.taskDone;
+        console.log("setting task status to done? " + _taskDone);
+        this.setState({
+            taskDone: _taskDone
+        });
+    }
     
     render(){
         let _item = this.props.item;
         let _index = this.props.itemIndex;
         let _handleDelete = this.props.handleDelete;
-        console.log("Rendering Todo Item, " + _item);
+        //console.log("Rendering Todo Item, " + _item);
         return (<tr>
                     <td key={_item + '-' + _index + 'index'}>{_index}</td>
-                    <td key={_item + '-' + _index + 'done'}>done</td>
+                    <td key={_item + '-' + _index + 'done'}>
+                        <Input type="checkbox" label="Mark as Done" bsStyle="success" value={this.state.taskDone} onClick={this.handleOnClick.bind(this)}></Input>
+                    </td>
                     <td key={_item + '-' + _index + 'description'}>{_item}</td>
                     <td key={_item + '-' + _index + 'delete'}>
                         <Button 
