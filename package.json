@@ -4,7 +4,7 @@
   "description": "ReactJS Todo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "set TAGET=build;webpack",
     "start": "webpack-dev-server --devtool eval --progress --colors --hot"
   },
@@ -22,7 +22,12 @@
     "file-loader": "0.8.5",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^0.8.3"
+    "webpack-merge": "^0.8.3",
+    "react-addons-test-utils": "^0.14.7",
+    "jest-cli": "0.8.2",
+    "babel-jest": "^6.0.1",
+    "webpack-babel-jest": "^1.0.4",
+    "babel-polyfill": "^6.6.1"
   },
   "dependencies": {
     "react": "^0.14.7",
