@@ -41,11 +41,12 @@ if (TARGET === 'build') {
   module.exports = common;
 }
 */
-
+console.log('IP is ' + process.env.IP);
+console.log('PORT is ' + process.env.PORT);
 //if (TARGET === 'dev') {
   module.exports = merge(common, {
     entry: [
-      'webpack-dev-server/client?http://0.0.0.0:8080',
+      'webpack-dev-server/client?https://' + process.env.IP + ':' + process.env.PORT,
       'webpack/hot/dev-server'
     ],
     module: {

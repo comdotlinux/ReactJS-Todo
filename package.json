@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "set TAGET=build;webpack",
-    "start": "webpack-dev-server --devtool eval --progress --colors --hot"
+    "start": "webpack-dev-server --devtool eval --progress --colors --hot --host $IP --port $PORT"
   },
   "author": "Guruprasad Kulkarni",
   "license": "GPL-3.0",
