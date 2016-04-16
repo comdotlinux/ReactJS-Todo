@@ -24,7 +24,7 @@ export default class TodoItem extends React.Component {
         let _index = this.props.itemIndex;
         let _handleDelete = this.props.handleDelete;
         //console.log("Rendering Todo Item, " + _item);
-        return (<tr>
+        return (<tr className={this.state.taskDone ? 'taskDone' : ''}>
                     <td key={_item + '-' + _index + 'index'}>{_index}</td>
                     <td key={_item + '-' + _index + 'done'}>
                         <Input type="checkbox" label="Mark as Done" bsStyle="success" value={this.state.taskDone} onClick={this.handleOnClick.bind(this)}></Input>

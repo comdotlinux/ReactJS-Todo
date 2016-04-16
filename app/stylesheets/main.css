@@ -9,3 +9,7 @@
 .form-control.inputyellow{
     color: yellow;
 }
+
+.taskDone{
+    text-decoration: line-through;
+}
