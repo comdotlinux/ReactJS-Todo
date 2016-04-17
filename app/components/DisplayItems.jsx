@@ -1,37 +1,39 @@
 import React from 'react';
-import { Button,Table } from 'react-bootstrap';
+import Table from 'react-bootstrap';
 import TodoItem from './TodoItem';
 
 export default class DisplayItems extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+    }
+    
+    getTodoItems() {
+        if ( !this.props.todoItems || this.props.todoItems.length === 0) {
+            return '';
+        }
+        return this.props.todoItems.map((item, i) => {
+            const idx = i + 1;
+            let todo = '';
+            if (item) {
+                todo = <TodoItem key={item + '-' + idx} handleDelete={this.props.handleDelete} item={item} itemIndex={idx}/>;
+            }
+            return todo;
+        });
     }
     
     render() {
-        let _handleDelete = this.props.handleDelete;
-        let _todos = this.props.todoItems;
-    return (<Table striped bordered condensed hover>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Done</th>
-                    <th>Todo Description</th>
-                    <th>Delete TODO</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {_todos.map((_item, i) => {
-                                    return <TodoItem 
-                                               key={_item + '-' + (i + 1)} 
-                                               handleDelete={_handleDelete} 
-                                               item={_item} 
-                                               itemIndex={i + 1}/>
-                                }
-                           )
-                }
-                </tbody>
-           </Table>);
-    }
+        return (<Table striped bordered condensed hover>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Done</th>
+                        <th>Todo Description</th>
+                        <th>Delete TODO</th>
+                      </tr>
+                    </thead>
+                    <tbody>{this.getTodoItems.bind(this)}</tbody>
+               </Table>);
+        }
 }
 
 DisplayItems.propTypes = {

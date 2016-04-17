@@ -13,12 +13,14 @@ export default class App extends React.Component {
           todoItems: [],
           textInputClass: ''
         };
+        
+        if (!String.prototype.contains) {
+            String.prototype.contains = (s) => { return this.indexOf(s) > -1; };
+        }
     }
 
 
     handleDelete(todoItemToRemove){
-        //console.log("Item to remove : ", todoItemToRemove);
-        
         let _newTodos = this.state.todoItems.filter((_item) => {
             console.log("item to compare : ",_item);
             return todoItemToRemove !== _item;
@@ -35,7 +37,7 @@ export default class App extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         let _todoItem = this.state.todoItem;
-        if(_todoItem !== null && _todoItem !== '' && !_.contains(this.state.todoItems,_todoItem)){
+        if(_todoItem !== null && _todoItem !== '' && !_.contains(this.state.todoItems,_todoItem)) {
             let updatedTodoItems = this.state.todoItems.concat(_todoItem);
             this.setState({
                 todoItems: updatedTodoItems
@@ -61,10 +63,11 @@ export default class App extends React.Component {
     }
     
     handleChange() {
-        let todoItemValue = this.refs.input.getValue();
+        const todoItemValue = this.refs.input.getValue();
         let cssClassToSet = '';
         if (todoItemValue !== null) {
-            let todoItemValueLower = todoItemValue.toLowerCase();
+            console.log('todoItemValue : ' + todoItemValue);
+            const todoItemValueLower = todoItemValue.toLowerCase();
 
             if (todoItemValueLower.contains('red')) {
                 cssClassToSet = 'inputred';
