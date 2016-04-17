@@ -8,10 +8,8 @@ export default class DisplayItems extends React.Component {
     }
     
     getTodoItems() {
-        if ( !this.props.todoItems || this.props.todoItems.length === 0) {
-            return '';
-        }
-        return this.props.todoItems.map((item, i) => {
+        
+        const todos = this.props.todoItems.map((item, i) => {
             const idx = i + 1;
             let todo = '';
             if (item) {
@@ -19,6 +17,8 @@ export default class DisplayItems extends React.Component {
             }
             return todo;
         });
+        console.log(todos);
+        return (<tbody>{todos}</tbody>);
     }
     
     render() {
@@ -31,7 +31,7 @@ export default class DisplayItems extends React.Component {
                         <th>Delete TODO</th>
                       </tr>
                     </thead>
-                    <tbody>{this.getTodoItems.bind(this)}</tbody>
+                    {this.getTodoItems.bind(this)}
                </Table>);
         }
 }
