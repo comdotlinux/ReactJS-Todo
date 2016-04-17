@@ -21,7 +21,6 @@ export default class DisplayItems extends React.Component {
                 </thead>
                 <tbody>
                 {_todos.map((_item, i) => {
-                                    //console.log("inside DisplayItems todos.map item " + _item + " and index is" +  i);
                                     return <TodoItem 
                                                key={_item + '-' + (i + 1)} 
                                                handleDelete={_handleDelete} 

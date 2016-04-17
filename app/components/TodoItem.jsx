@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, Button } from 'react-bootstrap';
+import logger from 'loglevel';
 
 export default class TodoItem extends React.Component {
     constructor(props){
@@ -8,12 +9,13 @@ export default class TodoItem extends React.Component {
         this.state = {
             taskDone: false
         }
+        console.log(logger);
         
     } 
     
     handleOnClick(){
         let _taskDone = !this.state.taskDone;
-        console.log("setting task status to done? " + _taskDone);
+        logger.info("setting task status to done? ", _taskDone);
         this.setState({
             taskDone: _taskDone
         });
@@ -24,18 +26,18 @@ export default class TodoItem extends React.Component {
         let _index = this.props.itemIndex;
         let _handleDelete = this.props.handleDelete;
         //console.log("Rendering Todo Item, " + _item);
-        return (<tr className={this.state.taskDone ? 'taskDone' : ''}>
-                    <td key={_item + '-' + _index + 'index'}>{_index}</td>
-                    <td key={_item + '-' + _index + 'done'}>
+        return (<tr key={_item + '-' + _index + 'index'} className={this.state.taskDone ? 'taskDone' : ''}>
+                    <td>{_index}</td>
+                    <td>
                         <Input type="checkbox" label="Mark as Done" bsStyle="success" value={this.state.taskDone} onClick={this.handleOnClick.bind(this)}></Input>
                     </td>
-                    <td key={_item + '-' + _index + 'description'}>{_item}</td>
-                    <td key={_item + '-' + _index + 'delete'}>
+                    <td>{_item}</td>
+                    <td>
                         <Button 
                             bsStyle="warning"
                             href="#"
                             bsSize="xs"
-                            onClick={_handleDelete.bind(null,_item)}>Delete?</Button>
+                            onClick={_handleDelete(_item)}>Delete?</Button>
                     </td>
                 </tr>);
     }
@@ -50,7 +52,7 @@ TodoItem.propTypes = {
 
 TodoItem.defaultProps = {
     handleDelete: function(itemToDelete){
-        console.log("Should be replaced by a function callback to delete the todo from state list.");
+        logger.info("Should be replaced by a function callback to delete the todo from state list.");
     },
     item: '',
     itemIndex: 0
