@@ -53,8 +53,8 @@ export default class App extends React.Component {
         
         let length = this.state.todoItem.length;
         //console.log("input length for textfield validation is : ", length);
-        if (length > 20) return 'success';
-        else if (length > 10) return 'warning';
+        if (length > 10) return 'success';
+        else if (length > 5) return 'warning';
         else if (length > 0) return 'error';
         
         
@@ -63,14 +63,14 @@ export default class App extends React.Component {
     handleChange() {
         let todoItemValue = this.refs.input.getValue();
         let cssClassToSet = '';
-        if(todoItemValue !== null){
+        if (todoItemValue !== null) {
             let todoItemValueLower = todoItemValue.toLowerCase();
 
-            if(todoItemValueLower.contains('red')){
+            if (todoItemValueLower.contains('red')) {
                 cssClassToSet = 'inputred';
-            } else if(todoItemValueLower.contains('green')){
+            } else if (todoItemValueLower.contains('green')) {
                 cssClassToSet = 'inputgreen';
-            } else if(todoItemValueLower.contains('yellow')){
+            } else if (todoItemValueLower.contains('yellow')) {
                 cssClassToSet = 'inputyellow';
             }
         }

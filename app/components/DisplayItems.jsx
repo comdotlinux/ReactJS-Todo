@@ -3,11 +3,11 @@ import { Button,Table } from 'react-bootstrap';
 import TodoItem from './TodoItem';
 
 export default class DisplayItems extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
     }
     
-    render(){
+    render() {
         let _handleDelete = this.props.handleDelete;
         let _todos = this.props.todoItems;
     return (<Table striped bordered condensed hover>
@@ -36,12 +36,10 @@ export default class DisplayItems extends React.Component {
 
 DisplayItems.propTypes = {
     handleDelete: React.PropTypes.func.isRequired,
-    todoItems: React.PropTypes.array.isRequired
+    todoItems: React.PropTypes.array.isRequired,
 };
 
 DisplayItems.defaultProps = {
-    handleDelete: function(itemToDelete){
-        console.log("Should be replaced by a function callback to delete the todo from state list.");
-    },
-    todoItems: []
+    handleDelete: (itemToDelete) => {console.log("Should be replaced by a function callback to delete the todo from state list.");},
+    todoItems: [],
 };

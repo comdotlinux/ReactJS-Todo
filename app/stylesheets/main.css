@@ -10,6 +10,6 @@
     color: yellow;
 }
 
-.taskDone{
+.task-done{
     text-decoration: line-through;
 }
