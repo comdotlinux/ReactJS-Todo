@@ -11,7 +11,7 @@ export default class App extends React.Component {
         this.state = {
           todoItem: '',
           todoItems: [],
-          textInputClass: ''
+          textInputClass: '',
         };
     }
 
@@ -28,7 +28,7 @@ export default class App extends React.Component {
         //console.log("new todo list ", _newTodos.toString());
         
         this.setState({
-           todoItems: _newTodos 
+           todoItems: _newTodos,
         });
     }
 
@@ -45,40 +45,36 @@ export default class App extends React.Component {
         }
         
         this.setState({
-                todoItem: ''
+                todoItem: '',
             });
     }
     
     validationState() {
-        
         let length = this.state.todoItem.length;
         //console.log("input length for textfield validation is : ", length);
         if (length > 20) return 'success';
         else if (length > 10) return 'warning';
         else if (length > 0) return 'error';
-        
-        
     }
     
     handleChange() {
         let todoItemValue = this.refs.input.getValue();
         let cssClassToSet = '';
-        if(todoItemValue !== null){
+        if(todoItemValue !== null) {
             let todoItemValueLower = todoItemValue.toLowerCase();
 
-            if(todoItemValueLower.contains('red')){
+            if(todoItemValueLower.indexOf('red') > -1) {
                 cssClassToSet = 'inputred';
-            } else if(todoItemValueLower.contains('green')){
+            } else if(todoItemValueLower.indexOf('green') > -1) {
                 cssClassToSet = 'inputgreen';
-            } else if(todoItemValueLower.contains('yellow')){
+            } else if(todoItemValueLower.indexOf('yellow') > -1) {
                 cssClassToSet = 'inputyellow';
             }
         }
-        //console.log("css class set as ", cssClassToSet);
-    
+        
         this.setState({
           todoItem: todoItemValue,
-          textInputClass: cssClassToSet
+          textInputClass: cssClassToSet,
         });
     }
     

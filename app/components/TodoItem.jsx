@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, Button } from 'react-bootstrap';
-import logger from 'loglevel';
+import * as log from 'loglevel';
 
 export default class TodoItem extends React.Component {
     constructor(props){
@@ -9,13 +9,13 @@ export default class TodoItem extends React.Component {
         this.state = {
             taskDone: false
         }
-        console.log(logger);
+        console.log(log);
         
     } 
     
     handleOnClick(){
         let _taskDone = !this.state.taskDone;
-        logger.info("setting task status to done? ", _taskDone);
+        log.info("setting task status to done? ", _taskDone);
         this.setState({
             taskDone: _taskDone
         });
@@ -52,7 +52,7 @@ TodoItem.propTypes = {
 
 TodoItem.defaultProps = {
     handleDelete: function(itemToDelete){
-        logger.info("Should be replaced by a function callback to delete the todo from state list.");
+        log.info("Should be replaced by a function callback to delete the todo from state list.");
     },
     item: '',
     itemIndex: 0

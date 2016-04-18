@@ -21,13 +21,11 @@ export default class DisplayItems extends React.Component {
                 </thead>
                 <tbody>
                 {_todos.map((_item, i) => {
-                                    return <TodoItem 
+                                    return (<TodoItem 
                                                key={_item + '-' + (i + 1)} 
-                                               handleDelete={_handleDelete} 
+                                               handleDelete={_handleDelete(_item)} 
                                                item={_item} 
-                                               itemIndex={i + 1}/>
-                                }
-                           )
+                                               itemIndex={i + 1}/>);})
                 }
                 </tbody>
            </Table>);
