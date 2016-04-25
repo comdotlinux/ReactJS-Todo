@@ -8,17 +8,11 @@ export default class DisplayItems extends React.Component {
     }
     
     getTodoItems() {
-        
-        const todos = this.props.todoItems.map((item, i) => {
-            const idx = i + 1;
-            let todo = '';
-            if (item) {
-                todo = <TodoItem key={item + '-' + idx} handleDelete={this.props.handleDelete} item={item} itemIndex={idx}/>;
-            }
-            return todo;
-        });
-        console.log(todos);
-        return (<tbody>{todos}</tbody>);
+        const self = this;
+        const todos = this.props.todoItems.length !== 0 ? this.props.todoItems.map((item, i) => {
+            return (<TodoItem key={item + '-' + i} handleDelete={self.props.handleDelete} item={item} itemIndex={i}/>);
+        }) : [];
+        return todos;
     }
     
     render() {
@@ -31,7 +25,7 @@ export default class DisplayItems extends React.Component {
                         <th>Delete TODO</th>
                       </tr>
                     </thead>
-                    {this.getTodoItems.bind(this)}
+                    <tbody>{this.getTodoItems()}</tbody>
                </Table>);
         }
 }
@@ -41,7 +35,4 @@ DisplayItems.propTypes = {
     todoItems: React.PropTypes.array.isRequired,
 };
 
-DisplayItems.defaultProps = {
-    handleDelete: (itemToDelete) => {console.log("Should be replaced by a function callback to delete the todo from state list.");},
-    todoItems: [],
-};
+DisplayItems.defaultProps = {};

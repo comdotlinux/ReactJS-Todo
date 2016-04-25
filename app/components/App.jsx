@@ -26,9 +26,6 @@ export default class App extends React.Component {
             return todoItemToRemove !== _item;
         });
         
-        //console.log("current todo list ", this.state.todoItems.toString());
-        //console.log("new todo list ", _newTodos.toString());
-        
         this.setState({
            todoItems: _newTodos 
         });
@@ -54,10 +51,7 @@ export default class App extends React.Component {
     validationState() {
         
         let length = this.state.todoItem.length;
-        //console.log("input length for textfield validation is : ", length);
-        if (length > 10) return 'success';
-        else if (length > 5) return 'warning';
-        else if (length > 0) return 'error';
+        return length > 10 ? 'success' : length > 5 ? 'warning' : 'error';
         
         
     }
