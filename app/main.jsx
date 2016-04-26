@@ -6,11 +6,10 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import App from './components/App';
 
-main();
-
-function main() {
+(function() {
   var app = document.createElement('div');
   document.body.appendChild(app);
 
-  ReactDOM.render(<App />, app);
-}
+  ReactDOM.render(<App/>, app);
+})();
+

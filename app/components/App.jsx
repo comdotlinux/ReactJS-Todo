@@ -1,7 +1,6 @@
 import React from 'react';
 import { Input, ButtonInput } from 'react-bootstrap';
 import DisplayItems from './DisplayItems';
-import _ from 'underscore';
 
 export default class App extends React.Component {
     
@@ -10,7 +9,7 @@ export default class App extends React.Component {
 
         this.state = {
           todoItem: '',
-          todoItems: ['eggs', 'bread', 'banana', 'ice'],
+          todoItems: ['eggs', 'bread', 'banana', 'ice', 'Beer', 'Rum', 'Vodka'],
           textInputClass: ''
         };
         
@@ -21,7 +20,7 @@ export default class App extends React.Component {
 
 
     handleDelete(todoItemToRemove){
-        let _newTodos = this.state.todoItems.filter((_item) => {
+        const _newTodos = this.state.todoItems.filter((_item) => {
             console.log("item to compare : ",_item);
             return todoItemToRemove !== _item;
         });
@@ -33,11 +32,12 @@ export default class App extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        let _todoItem = this.state.todoItem;
-        if(_todoItem !== null && _todoItem !== '' && !_.contains(this.state.todoItems,_todoItem)) {
-            let updatedTodoItems = this.state.todoItems.concat(_todoItem);
+        const _todoItem = this.state.todoItem;
+        if(_todoItem !== null && _todoItem !== '' && this.state.todoItems.indexOf(_todoItem) === -1) {
+            const _todoItems = this.state.todoItems;
+            _todoItems.push(_todoItem);
             this.setState({
-                todoItems: updatedTodoItems
+                todoItems: _todoItems,
             });
         } else {
             console.log("Skipping adding a empty todo...");
