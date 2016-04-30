@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
 
     handleDelete(todoItemToRemove){
-        const _newTodos = this.state.todoItems.filter((_item) => {
+        let _newTodos = this.state.todoItems.filter((_item) => {
             console.log("item to compare : ",_item);
             return todoItemToRemove !== _item;
         });
@@ -32,9 +32,9 @@ export default class App extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const _todoItem = this.state.todoItem;
+        let _todoItem = this.state.todoItem;
         if(_todoItem !== null && _todoItem !== '' && this.state.todoItems.indexOf(_todoItem) === -1) {
-            const _todoItems = this.state.todoItems;
+            let _todoItems = this.state.todoItems;
             _todoItems.push(_todoItem);
             this.setState({
                 todoItems: _todoItems,
@@ -43,9 +43,7 @@ export default class App extends React.Component {
             console.log("Skipping adding a empty todo...");
         }
         
-        this.setState({
-                todoItem: ''
-            });
+        this.setState({ todoItem: ''});
     }
     
     validationState() {
@@ -57,7 +55,7 @@ export default class App extends React.Component {
     }
     
     handleChange() {
-        const todoItemValue = this.refs.input.getValue();
+        let todoItemValue = this.refs.input.getValue();
         let cssClassToSet = '';
         if (todoItemValue !== null) {
             console.log('todoItemValue : ' + todoItemValue);

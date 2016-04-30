@@ -7,19 +7,17 @@ export default class DisplayItems extends React.Component {
         super(props);
     }
     
-    getTodoItems() {
-        const _handleDelete = this.props.handleDelete;
-        const todos = [];
-        if (this.props.todoItems && this.props.todoItems.length !== 0) {
-            this.props.todoItems.map((item, i) => {
-                todos.push(<TodoItem key={item + '-' + i} handleDelete={_handleDelete} item={item} itemIndex={i}/>);
+    render() {
+        let todoItems = this.props.todoItems;
+        let todos = <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>;
+        if (todoItems !== undefined && todoItems !== null && todoItems.length !== 0) {
+            todos = [];
+            todoItems.map((item, i) => {
+                if (item !== null && item !== undefined) {
+                    todos.push(<TodoItem key={item + '-' + i} handleDelete={this.props.handleDelete} item={item} itemIndex={i}/>);                    
+                }
             });
         }
-        return todos;
-    }
-    
-    render() {
-        const emptyRow = (<tr></tr>);
         return (<Table striped bordered condensed hover>
                     <thead>
                       <tr>
@@ -29,7 +27,7 @@ export default class DisplayItems extends React.Component {
                         <th>Delete TODO</th>
                       </tr>
                     </thead>
-                    <tbody>{this.getTodoItems() || emptyRow}</tbody>
+                    <tbody>{todos}</tbody>
                </Table>);
         }
 }

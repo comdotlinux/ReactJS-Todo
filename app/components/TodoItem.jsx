@@ -7,20 +7,17 @@ export default class TodoItem extends React.Component {
         this.state = {
             taskDone: false,
         };
-        
-    } 
+    }
     
-    handleOnClick(event) {
-        event.preventDefault();
-        let _taskDone = !this.state.taskDone;
+    handleOnClick() {
         this.setState({
-            taskDone: _taskDone,
+            taskDone: !this.state.taskDone,
         });
     }
     
     render() {
-        const _item = this.props.item || '';
-        const _index = this.props.itemIndex || 0;
+        let _item = this.props.item || '';
+        let _index = this.props.itemIndex || 0;
         return (<tr key={_item + '-' + _index} className={this.state.taskDone ? 'task-done' : ''}>
                     <td>{_index}</td>
                     <td>
@@ -30,7 +27,6 @@ export default class TodoItem extends React.Component {
                     <td>
                         <Button 
                             bsStyle="warning"
-                            href="#"
                             bsSize="xs"
                             onClick={this.props.handleDelete(_item)}>Delete?</Button>
                     </td>
