@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import TodoItem from './TodoItem';
 
 export default class DisplayItems extends React.Component {
@@ -9,7 +9,7 @@ export default class DisplayItems extends React.Component {
     
     render() {
         let todoItems = this.props.todoItems;
-        let todos = <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>;
+        let todos = '';
         if (todoItems !== undefined && todoItems !== null && todoItems.length !== 0) {
             todos = [];
             todoItems.map((item, i) => {
