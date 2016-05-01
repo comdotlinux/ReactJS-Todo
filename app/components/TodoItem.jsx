@@ -16,8 +16,8 @@ export default class TodoItem extends React.Component {
     }
     
     render() {
-        let _item = this.props.item || '';
-        let _index = this.props.itemIndex || 0;
+        let _item = this.props.item;
+        let _index = this.props.itemIndex;
         return (<tr key={_item + '-' + _index} className={this.state.taskDone ? 'task-done' : ''}>
                     <td>{_index}</td>
                     <td>

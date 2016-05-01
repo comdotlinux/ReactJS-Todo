@@ -47,11 +47,8 @@ export default class App extends React.Component {
     }
     
     validationState() {
-        
         let length = this.state.todoItem.length;
         return length > 10 ? 'success' : length > 5 ? 'warning' : 'error';
-        
-        
     }
     
     handleChange() {
