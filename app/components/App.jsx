@@ -12,10 +12,6 @@ export default class App extends React.Component {
           todoItems: ['eggs', 'bread', 'banana', 'ice', 'Beer', 'Rum', 'Vodka'],
           textInputClass: ''
         };
-        
-        if (!String.prototype.contains) {
-            String.prototype.contains = (s) => { return this.indexOf(s) > -1; };
-        }
     }
 
 
@@ -54,15 +50,15 @@ export default class App extends React.Component {
     handleChange() {
         let todoItemValue = this.refs.input.getValue();
         let cssClassToSet = '';
-        if (todoItemValue !== null) {
+        if (todoItemValue !== null && todoItemValue.length > 0) {
             console.log('todoItemValue : ' + todoItemValue);
             const todoItemValueLower = todoItemValue.toLowerCase();
 
-            if (todoItemValueLower.contains('red')) {
+            if (todoItemValueLower.indexOf('red') > -1) {
                 cssClassToSet = 'inputred';
-            } else if (todoItemValueLower.contains('green')) {
+            } else if (todoItemValueLower.indexOf('green') > -1) {
                 cssClassToSet = 'inputgreen';
-            } else if (todoItemValueLower.contains('yellow')) {
+            } else if (todoItemValueLower.indexOf('yellow') > -1) {
                 cssClassToSet = 'inputyellow';
             }
         }

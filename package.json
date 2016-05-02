@@ -2,11 +2,11 @@
   "name": "react-js-todo-app",
   "version": "0.0.1",
   "description": "ReactJS Todo",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "scripts": {
     "test": "jest",
-    "build": "set TAGET=build;webpack",
-    "start": "webpack-dev-server --devtool eval --progress --colors --hot --host $IP --port $PORT"
+    "build": "TARGET=build; ./node_modules/.bin/webpack",
+    "run": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --inline --hot"
   },
   "author": "Guruprasad Kulkarni",
   "license": "GPL-3.0",

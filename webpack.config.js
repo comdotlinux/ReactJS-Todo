@@ -19,34 +19,32 @@ var common = {
   ],
   module: {
     loaders: [
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
-      },
-      {
-        test: /\.jsx?$/,
-        loader: 'babel?stage=1',
-        include: path.resolve(ROOT_PATH, 'app'),
-      },
-      {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
+      {test: /\.css$/, loaders: ['style', 'css'], },
+      {test: /\.jsx?$/, loader: 'babel?stage=1', include: path.resolve(ROOT_PATH, 'app'), },
+      {test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff", },
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream", },
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file", },
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml", }
     ],
   },
 };
 
-/*
-if (TARGET === 'build') {
+var ip_address = process.env.IP || 'localhost';
+var port = process.env.PORT || 8080;
+var target = process.env.TARGET || 'build';
+
+
+console.log('IP is ' + ip_address);
+console.log('PORT is ' + port);
+
+if (target === 'build') {
   module.exports = common;
 }
-*/
-console.log('IP is ' + process.env.IP);
-console.log('PORT is ' + process.env.PORT);
-//if (TARGET === 'dev') {
+
+if (target === 'dev') {
   module.exports = merge(common, {
     entry: [
-      'webpack-dev-server/client?https://' + process.env.IP + ':' + process.env.PORT,
+      'webpack-dev-server/client?https://' + ip_address + ':' + port,
       'webpack/hot/dev-server'
     ],
     module: {
@@ -58,4 +56,4 @@ console.log('PORT is ' + process.env.PORT);
       ],
     },
   });
-//}
+}
