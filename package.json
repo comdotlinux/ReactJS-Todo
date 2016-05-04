@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "TARGET=build; ./node_modules/.bin/webpack",
-    "run": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --inline --hot"
+    "start": "./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --hot --host $IP --port $PORT"
   },
   "author": "Guruprasad Kulkarni",
   "license": "GPL-3.0",

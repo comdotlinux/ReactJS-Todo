@@ -17,7 +17,7 @@ export default class App extends React.Component {
 
     handleDelete(todoItemToRemove){
         let _newTodos = this.state.todoItems.filter((_item) => {
-            console.log("item to compare : ",_item);
+            // console.log("item to compare : ",_item);
             return todoItemToRemove !== _item;
         });
         
@@ -42,16 +42,11 @@ export default class App extends React.Component {
         this.setState({ todoItem: ''});
     }
     
-    validationState() {
-        let length = this.state.todoItem.length;
-        return length > 10 ? 'success' : length > 5 ? 'warning' : 'error';
-    }
-    
     handleChange() {
         let todoItemValue = this.refs.input.getValue();
         let cssClassToSet = '';
         if (todoItemValue !== null && todoItemValue.length > 0) {
-            console.log('todoItemValue : ' + todoItemValue);
+            // console.log('todoItemValue : ' + todoItemValue);
             const todoItemValueLower = todoItemValue.toLowerCase();
 
             if (todoItemValueLower.indexOf('red') > -1) {
@@ -80,8 +75,8 @@ export default class App extends React.Component {
                                 value={this.state.todoItem}
                                 className={this.state.textInputClass}
                                 placeholder="Please enter a good descriptive todo...."
-                                bsStyle={this.validationState()}
-                                hasFeedback
+                                bsStyle={() => {const length = this.state.todoItem.length; return length > 10 ? 'success' : length > 5 ? 'warning' : 'error'}}
+                                hasFeedback={this.state.todoItem.length > 0}
                                 ref="input"
                                 onChange={this.handleChange.bind(this)}></Input>
                                 <ButtonInput type="submit" bsStyle="primary">Add TODO</ButtonInput>

@@ -9,7 +9,7 @@ export default class DisplayItems extends React.Component {
     
     render() {
         let todoItems = this.props.todoItems;
-        let todos = '';
+        let todos = <tr></tr>;
         if (todoItems !== undefined && todoItems !== null && todoItems.length !== 0) {
             todos = [];
             todoItems.map((item, i) => {

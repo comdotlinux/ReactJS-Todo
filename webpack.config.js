@@ -31,7 +31,7 @@ var common = {
 
 var ip_address = process.env.IP || 'localhost';
 var port = process.env.PORT || 8080;
-var target = process.env.TARGET || 'build';
+var target = process.env.TARGET || 'dev';
 
 
 console.log('IP is ' + ip_address);
