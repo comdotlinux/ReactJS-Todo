@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button } from 'react-bootstrap';
+import { Input, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 export default class TodoItem extends React.Component {
     constructor(props) {
@@ -27,6 +27,7 @@ export default class TodoItem extends React.Component {
     render() {
         let _item = this.props.item;
         let _index = this.props.itemIndex;
+        const tooltip = (<Tooltip><strong>{this.state.taskDone ? 'Delete TODO :: ' : 'Cannot Delete! :: '}</strong>{this.state.taskDone ? 'Click to delete from list.' : 'Please mark TODO as read first.'}</Tooltip>);
         return (<tr key={_item + '-' + _index} className={this.state.taskDone ? 'task-done' : ''}>
                     <td>{_index}</td>
                     <td>
@@ -34,11 +35,13 @@ export default class TodoItem extends React.Component {
                     </td>
                     <td>{_item}</td>
                     <td>
-                        <Button 
-                            bsStyle="warning"
-                            bsSize="xs"
-                            disabled={!this.state.taskDone}
-                            onClick={this.handleItemDelete.bind(this, _item)}>Delete?</Button>
+                        <OverlayTrigger placement="right" overlay={tooltip}>
+                            <Button 
+                                bsStyle="warning"
+                                bsSize="xs"
+                                disabled={!this.state.taskDone}
+                                onClick={this.handleItemDelete.bind(this, _item)}>Delete?</Button>
+                        </OverlayTrigger>
                     </td>
                 </tr>);
     }
