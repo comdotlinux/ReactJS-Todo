@@ -37,6 +37,7 @@ export default class TodoItem extends React.Component {
                         <Button 
                             bsStyle="warning"
                             bsSize="xs"
+                            disabled={!this.state.taskDone}
                             onClick={this.handleItemDelete.bind(this, _item)}>Delete?</Button>
                     </td>
                 </tr>);
