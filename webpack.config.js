@@ -33,18 +33,16 @@ var ip_address = process.env.IP || 'localhost';
 var port = process.env.PORT || 8080;
 var target = process.env.TARGET || 'dev';
 
-
 console.log('IP is ' + ip_address);
 console.log('PORT is ' + port);
 
 if (target === 'build') {
   module.exports = common;
 }
-
+      // 'webpack-dev-server/client?https://' + ip_address + ':' + port,
 if (target === 'dev') {
   module.exports = merge(common, {
     entry: [
-      'webpack-dev-server/client?https://' + ip_address + ':' + port,
       'webpack/hot/dev-server'
     ],
     module: {

@@ -15,6 +15,15 @@ export default class TodoItem extends React.Component {
         });
     }
     
+    handleItemDelete(item) {
+        if(item) {
+            this.props.handleDelete(item);            
+        } else {
+            console.log('TodoItem :: Did not call handle Delete, item was :: ', item);
+        }
+        
+    }
+    
     render() {
         let _item = this.props.item;
         let _index = this.props.itemIndex;
@@ -28,7 +37,7 @@ export default class TodoItem extends React.Component {
                         <Button 
                             bsStyle="warning"
                             bsSize="xs"
-                            onClick={this.props.handleDelete(_item)}>Delete?</Button>
+                            onClick={this.handleItemDelete.bind(this, _item)}>Delete?</Button>
                     </td>
                 </tr>);
     }

@@ -75,7 +75,7 @@ export default class App extends React.Component {
                                 value={this.state.todoItem}
                                 className={this.state.textInputClass}
                                 placeholder="Please enter a good descriptive todo...."
-                                bsStyle={() => {const length = this.state.todoItem.length; return length > 10 ? 'success' : length > 5 ? 'warning' : 'error'}}
+                                bsStyle={this.state.todoItem.length > 10 ? 'success' : this.state.todoItem.length > 5 ? 'warning' : 'error'}
                                 hasFeedback={this.state.todoItem.length > 0}
                                 ref="input"
                                 onChange={this.handleChange.bind(this)}></Input>
