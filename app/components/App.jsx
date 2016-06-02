@@ -3,7 +3,7 @@ import { Input, ButtonInput } from 'react-bootstrap';
 import DisplayItems from './DisplayItems';
 
 export default class App extends React.Component {
-    
+
     constructor(props) {
         super(props);
 
@@ -20,9 +20,9 @@ export default class App extends React.Component {
             // console.log("item to compare : ",_item);
             return todoItemToRemove !== _item;
         });
-        
+
         this.setState({
-           todoItems: _newTodos 
+           todoItems: _newTodos
         });
     }
 
@@ -38,10 +38,9 @@ export default class App extends React.Component {
         } else {
             console.log("Skipping adding a empty todo...");
         }
-        
         this.setState({ todoItem: ''});
     }
-    
+
     handleChange() {
         let todoItemValue = this.refs.input.getValue();
         let cssClassToSet = '';
@@ -58,13 +57,13 @@ export default class App extends React.Component {
             }
         }
         //console.log("css class set as ", cssClassToSet);
-    
+
         this.setState({
           todoItem: todoItemValue,
           textInputClass: cssClassToSet
         });
     }
-    
+
   render () {
     return (
                 <div>
