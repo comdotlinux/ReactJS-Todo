@@ -17,3 +17,5 @@ To Run Locally:
 7. Point your browser to localhost:8080 and enjoy
 
 If it is running you could access the app directly at : https://reactjs-todo-comdotlinux.c9users.io/
+
+I am mostly running out of ideas to improve user experience. Jence any suggestions are welcome. 
